@@ -1,0 +1,13 @@
+#!/bin/sh
+
+sed -E -i \
+  -e '/^user\s+nginx;/a pid /var/run/nginx.pid;' \
+  -e '/^worker_processes\s+auto;/a worker_rlimit_nofile 4096;' \
+  -e 's#(error_log\s+)/var/log/nginx/error.log\s+warn;#\1/dev/stderr;#' \
+  -e 's#(worker_connections\s+)1024;#\12048;#' \
+  -e 's#(ssl_protocols\s+)TLSv1.1\s+(TLSv1.2\s+TLSv1.3;)#\1\2#' \
+  -e 's/#(gzip on;)/\1/' \
+  -e 's#(access_log\s+)/var/log/nginx/access.log\s+main;#\1/dev/stdout main;#' \
+  '/etc/nginx/nginx.conf'
+
+/usr/sbin/nginx -g 'daemon off;'
