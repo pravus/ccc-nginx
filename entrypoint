@@ -10,4 +10,4 @@ sed -E -i \
   -e 's#(access_log\s+)/var/log/nginx/access.log\s+main;#\1/dev/stdout main;#' \
   '/etc/nginx/nginx.conf'
 
-/usr/sbin/nginx -g 'daemon off;'
+exec /usr/sbin/nginx -g 'daemon off;'
