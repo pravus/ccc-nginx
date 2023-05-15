@@ -1,0 +1,13 @@
+[Unit]
+Description=carbon.cc nginx
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStart=/opt/ccc-nginx/bin/ccc-nginx-start
+ExecStop=/opt/ccc-nginx/bin/ccc-nginx-stop
+
+[Install]
+WantedBy=multi-user.target
