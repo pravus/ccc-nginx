@@ -2,7 +2,7 @@
 
 /usr/bin/docker stop ccc-nginx
 /usr/bin/docker rm ccc-nginx
-/usr/bin/docker run "$@" \
+exec /usr/bin/docker run "$@" \
   --rm \
   --name ccc-nginx \
   --hostname www.carbon.cc \
