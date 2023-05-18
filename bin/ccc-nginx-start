@@ -7,7 +7,7 @@ exec /usr/bin/docker run "$@" \
   --name ccc-nginx \
   --hostname www.carbon.cc \
   --network www \
-  --publish 80:8000 \
+  --publish 80:8080 \
   --publish 443:8443 \
   --volume /opt/ccc/etc/nginx/http.d:/etc/nginx/http.d:ro \
   --volume /opt/ccc/etc/ssl/carbon.cc/fullchain.pem:/etc/ssl/certs/carbon-cc.crt:ro \
